@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Log4j2
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("")
     public String index(){
         return "index" ;
     }

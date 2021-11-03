@@ -13,11 +13,11 @@
     </div>
     <ul class="header__menu">
         <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
-            <li><a th:href="@{/hotel/join}">회원가입</a></li>
-            <li><a th:href="@{/hotel/login}">로그인</a></li>
+            <li><a th:href="@{hotel/join}">회원가입</a></li>
+            <li><a th:href="@{hotel/login}">로그인</a></li>
         </div>
         <div sec:authorize-expr="isAuthenticated()">
-            <li><a th:href="@{/hotel/logout}">로그아웃</a></li>
+            <li><a th:href="@{hotel/logout}">로그아웃</a></li>
         </div>
     </ul>
 
@@ -25,11 +25,11 @@
 <hr />
 <nav id="navbar">
     <ul class="navbar__menu">
-        <li><a th:href="@{/hotel/introduce}">호텔소개</a></li>
-        <li><a th:href="@{/hotel/restaurant}">레스토랑/뷔페</a></li>
-        <li><a th:href="@{../board/list}">게시판</a></li>
-        <li><a th:href="@{/hotel/reservation}">예약하기</a></li>
-        <li><a th:href="@{/hotel/map}">오시는 길</a> </li>
+        <li><a th:href="@{hotel/introduce}">호텔소개</a></li>
+        <li><a th:href="@{hotel/restaurant}">레스토랑/뷔페</a></li>
+        <li><a th:href="@{board/list}">게시판</a></li>
+        <li><a th:href="@{hotel/reservation}">예약하기</a></li>
+        <li><a th:href="@{hotel/map}">오시는 길</a> </li>
     </ul>
 </nav>
 <section style="margin-bottom: 350px">
@@ -43,7 +43,7 @@
                 <button id="button1"type="submit">로그인</button>
             </form>
 
-    <div class="text__join">회원이 아니신가요? <a th:href="@{/hotel/join}" style="color: royalblue">CLUB MEMBER'S </a> 가입하기</div>
+    <div class="text__join">회원이 아니신가요? <a th:href="@{hotel/join}" style="color: royalblue">CLUB MEMBER'S </a> 가입하기</div>
 </section>
 <footer>
     <div class="wrap_inner">

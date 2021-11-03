@@ -49,11 +49,11 @@ public class HotelController {
 
     @RequestMapping("hotel/login")
     public String login(){
-        return "/hotel/login";
+        return "hotel/login";
     }
     @GetMapping("hotel/introduce")
     public String introduce(){
-        return "/hotel/introduce";
+        return "hotel/introduce";
     }
     @GetMapping("hotel/room")
     public String room(){

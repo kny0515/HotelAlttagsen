@@ -9,6 +9,8 @@ import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.JPQLQuery;
 import lombok.extern.log4j.Log4j2;
 import org.alttagsen.hotel.entity.Board;
+
+import org.alttagsen.hotel.entity.QBoard;
 import org.alttagsen.hotel.entity.QMember;
 import org.alttagsen.hotel.entity.QReply;
 import org.springframework.data.domain.Page;
@@ -16,7 +18,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
-import org.alttagsen.hotel.entity.QBoard;
+
 
 import java.util.List;
 import java.util.stream.Collectors;

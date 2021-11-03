@@ -29,7 +29,7 @@ public class AdminMemberController {
     private final Reservation2Service reservation2Service;
     private final Reservation3Service reservation3Service;
 
-    @GetMapping("/admin/member/list")
+    @GetMapping("admin/member/list")
     public String list(Model model){
 
         List<MemberInput> memberInputs = memberService.getMemberList();
@@ -38,7 +38,7 @@ public class AdminMemberController {
 
         return "/admin/member/list";
     }
-    @PostMapping("/admin/member/list")
+    @PostMapping("admin/member/list")
     public String listSearch(Model model, HttpServletRequest request){
 
         String id = request.getParameter("userid");
@@ -50,12 +50,12 @@ public class AdminMemberController {
         return "/admin/member/listSearch";
     }
 
-    @GetMapping("/admin/member/reservation")
+    @GetMapping("admin/member/reservation")
     public String reservation(){
 
         return "/admin/member/reservation";
     }
-    @GetMapping("/admin/member/room1")
+    @GetMapping("admin/member/room1")
     public String reservationRoom(Model model){
 
         List<ReservationDTO> reservationDTOList = reservationService.getReservationList();
@@ -65,7 +65,7 @@ public class AdminMemberController {
         return "/admin/member/room1";
     }
 
-    @GetMapping("/admin/member/room2")
+    @GetMapping("admin/member/room2")
     public String reservationRoom2(Model model){
 
         List<Reservation2DTO> reservationDTOList = reservation2Service.getReservationList();
@@ -75,7 +75,7 @@ public class AdminMemberController {
         return "/admin/member/room2";
     }
 
-    @GetMapping("/admin/member/room3")
+    @GetMapping("admin/member/room3")
     public String reservationRoom3(Model model){
 
         List<Reservation3DTO> reservationDTOList = reservation3Service.getReservationList();

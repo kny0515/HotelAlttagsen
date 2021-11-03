@@ -29,14 +29,14 @@ public class HotelController {
     private final Reservation2Service reservation2Service;
     private final Reservation3Service reservation3Service;
 
-    @GetMapping("/hotel/join")
+    @GetMapping("hotel/join")
     public String join(){
         return "/hotel/join";
     }
 
 
 
-    @PostMapping("/hotel/join")
+    @PostMapping("hotel/join")
     public String joinSubmit(Model model,
                              MemberInput parameter){
 
@@ -47,51 +47,51 @@ public class HotelController {
         return "/hotel/join_complete";
     }
 
-    @RequestMapping("/hotel/login")
+    @RequestMapping("hotel/login")
     public String login(){
         return "/hotel/login";
     }
-    @GetMapping("/hotel/introduce")
+    @GetMapping("hotel/introduce")
     public String introduce(){
         return "/hotel/introduce";
     }
-    @GetMapping("/hotel/room")
+    @GetMapping("hotel/room")
     public String room(){
         return "/hotel/room";
     }
-    @GetMapping("/hotel/convenience")
+    @GetMapping("hotel/convenience")
     public String convenience(){
         return "/hotel/convenience";
     }
-    @GetMapping("/hotel/event")
+    @GetMapping("hotel/event")
     public String event(){
         return "/hotel/event";
     }
-    @GetMapping("/hotel/service")
+    @GetMapping("hotel/service")
     public String service(){
         return "/hotel/service";
     }
-    @GetMapping("/hotel/restaurant")
+    @GetMapping("hotel/restaurant")
     public String restaurant(){
         return "/hotel/res";
     }
-    @GetMapping("/hotel/reservation")
+    @GetMapping("hotel/reservation")
     public String reservation(Model model){
         return "/hotel/reservation";
     }
-    @GetMapping("/hotel/reservation_room")
+    @GetMapping("hotel/reservation_room")
     public String reservationRoom1(){return "/hotel/reservation_room";}
-    @GetMapping("/hotel/reservation_room2")
+    @GetMapping("hotel/reservation_room2")
     public String reservationRoom2(){return "/hotel/reservation_room2";}
-    @GetMapping("/hotel/reservation_room3")
+    @GetMapping("hotel/reservation_room3")
     public String reservationRoom3(){return "/hotel/reservation_room3";}
-    @GetMapping("/hotel/map")
+    @GetMapping("hotel/map")
     public String map(){
         return "/hotel/map";
     }
 
 
-    @GetMapping("/hotel/reservation_list")
+    @GetMapping("hotel/reservation_list")
     public String reservation_list(Model model){
 
         List<ReservationDTO> reservationDTOS = reservationService.getReservationList();
@@ -102,7 +102,7 @@ public class HotelController {
 
     }
 
-    @GetMapping("/hotel/reservation2_list")
+    @GetMapping("hotel/reservation2_list")
     public String reservation2_list(Model model){
 
         List<Reservation2DTO> reservationDTOS = reservation2Service.getReservationList();
@@ -113,7 +113,7 @@ public class HotelController {
 
     }
 
-    @GetMapping("/hotel/reservation3_list")
+    @GetMapping("hotel/reservation3_list")
     public String reservation3_list(Model model){
 
         List<Reservation3DTO> reservationDTOS = reservation3Service.getReservationList();
@@ -124,7 +124,7 @@ public class HotelController {
 
     }
 
-    @PostMapping("/hotel/reservation_room")
+    @PostMapping("hotel/reservation_room")
     public String reservation_ok(Model model, HttpServletRequest request,
                                  ReservationDTO reservationDTO){
 
@@ -148,7 +148,7 @@ public class HotelController {
 
         return "/hotel/reservation_ok";
     }
-    @PostMapping("/hotel/reservation_room2")
+    @PostMapping("hotel/reservation_room2")
     public String reservation_ok2(Model model, HttpServletRequest request,
                                  Reservation2DTO reservationDTO){
 
@@ -172,7 +172,7 @@ public class HotelController {
 
         return "/hotel/reservation_ok2";
     }
-    @PostMapping("/hotel/reservation_room3")
+    @PostMapping("hotel/reservation_room3")
     public String reservation_ok3(Model model, HttpServletRequest request,
                                   Reservation3DTO reservationDTO){
 

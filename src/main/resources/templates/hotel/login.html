@@ -9,7 +9,7 @@
 <body>
 <header id="header">
     <div class="header__logo">
-        <a th:href="@{/}"><img src="/css/img/logo.png"></a>
+        <a th:href="@{}"><img src="/css/img/logo.png"></a>
     </div>
     <ul class="header__menu">
         <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">

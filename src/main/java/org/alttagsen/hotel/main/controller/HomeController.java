@@ -10,12 +10,12 @@ public class HomeController {
 
     @GetMapping("")
     public String index(){
-        return "index" ;
+        return "/index" ;
     }
 
     @GetMapping("error/denied")
     public String errorDenied(){
 
-        return "error/denied" ;
+        return "/error/denied" ;
     }
 }

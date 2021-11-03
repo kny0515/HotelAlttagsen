@@ -13,7 +13,7 @@ public class HomeController {
         return "index" ;
     }
 
-    @GetMapping("/error/denied")
+    @GetMapping("error/denied")
     public String errorDenied(){
 
         return "error/denied" ;

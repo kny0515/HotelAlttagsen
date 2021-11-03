@@ -12,8 +12,8 @@
     </div>
     <ul class="header__menu">
         <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
-            <li><a th:href="@{/hotel/join}">회원가입</a></li>
-            <li><a th:href="@{/hotel/login}">로그인</a></li>
+            <li><a th:href="@{hotel/join}">회원가입</a></li>
+            <li><a th:href="@{hotel/login}">로그인</a></li>
         </div>
         <div sec:authorize-expr="isAuthenticated()">
             <li><a th:href="@{/hotel/logout}">로그아웃</a></li>

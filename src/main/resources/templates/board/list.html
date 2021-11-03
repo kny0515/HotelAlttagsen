@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>게시판</title>
+</head>
+<body>
+    <header id="header">
+        <div class="header__logo">
+            <a th:href="@{/}"><img src="../css/img/logo.png"></a>
+        </div>
+        <ul class="header__menu">
+            <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
+                <li><a th:href="@{/hotel/join}">회원가입</a></li>
+                <li><a th:href="@{/hotel/login}">로그인</a></li>
+            </div>
+            <div sec:authorize-expr="isAuthenticated()">
+                <li><a th:href="@{/hotel/logout}">로그아웃</a></li>
+            </div>
+        </ul>
+    </header>
+    <hr />
+    <nav id="navbar" style="margin-top: -20px;">
+        <ul class="navbar__menu">
+            <li><a th:href="@{/hotel/introduce}">호텔소개</a></li>
+            <li><a th:href="@{/hotel/restaurant}">레스토랑/뷔페</a></li>
+            <li><a th:href="@{/board/list}">게시판</a></li>
+            <li><a th:href="@{/hotel/reservation}">예약하기</a></li>
+            <li><a th:href="@{/hotel/map}">오시는 길</a> </li>
+        </ul>
+    </nav>
+    <th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+        <th:block th:fragment="content">
+            <h1 class="mt-4" style="text-align: center; margin-bottom: 22px;">고객 게시판
+
+            </h1>
+            <form action="/board/list" method="get" id="searchForm" style="width: 80%; margin: 0 auto; margin-bottom: 30px;">
+                <div class="input-group">
+                    <input type="hidden" name="page" th:value="1">
+                    <div class="input-group-prepend">
+                        <select class="custom-select" name="type">
+                            <option th:selected="${pageRequestDTO.type == null}">------</option>
+                            <option value="t" th:selected="${pageRequestDTO.type == 't'}">제목</option>
+                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">내용</option>
+                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">작성자</option>
+                            <option value="tc" th:selected="${pageRequestDTO.type == 'tc'}">제목 + 내용</option>
+                            <option value="tcw" th:selected="${pageRequestDTO.type == 'tcw'}">제목 + 내용 + 작성자</option>
+                        </select>
+                    </div>
+                    <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
+                    <div class="input-group-append" id="button-addon4">
+                        <button class="btn btn-outline-secondary btn-search" type="button">검색</button>
+                        <button class="btn btn-outline-secondary btn-clear" type="button">초기화</button>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-striped" style="width: 80%;">
+                <thead>
+                <tr>
+                    <th scope="col">번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">등록 날짜</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr style="background-color:white;" th:each="dto : ${result.dtoList}">
+                    <th scope="row">
+                        [[${dto.bno}]]
+                    </th>
+                    <td><a style="color: black;" th:href="@{/board/read(bno = ${dto.bno}, page=${result.page},
+                        type=${pageRequestDTO.type}, keyword = ${pageRequestDTO.keyword})}">[[${dto.title}]] ---------------- [<b th:text="${dto.replyCount}"></b>]</a>
+                    </td>
+                    <td>[[${dto.writerUserName}]] <small>[[${dto.writerUserId}]]</small></td>
+                    <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="btn__box" style="width: 90%; text-align: right;">
+                <span>
+                    <a th:href="@{/board/register}"><button type="button" class="btn btn-outline-secondary" style="align-items: end; color: black; width: 120px;">글쓰기</button></a>
+                </span>
+            </div>
+            <ul class="pagination h-100 justify-content-center align-items-center">
+                <li class="page-item " th:if="${result.prev}">
+                    <a style="color: black;" class="page-link" th:href="@{/board/list(page=${result.start - 1},
+                    type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}" tabindex="-1">이전</a>
+                </li>
+
+                <li th:class=" 'page-item ' + ${result.page == page?'active':''}" th:each="page: ${result.pageList}">
+                    <a style="color: black;" class="page-link" th:href="@{/board/list(page=${page}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">[[${page}]]</a>
+                </li>
+
+                <li class="page-item" th:if="${result.next}">
+                    <a style="color: black;" class="page-link" th:href="@{/board/list(page=${result.end + 1}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">다음</a>
+                </li>
+            </ul>
+        </th:block>
+    </th:block>
+
+    <script th:inline="javascript">
+        var msg = [[${msg}]];
+        console.log(msg);
+
+        if (msg) {
+            $(".modal").modal();
+        }
+
+        var searchForm = $("#searchForm");
+        $('.btn-search').click(function(e){
+            searchForm.submit();
+        });
+
+        $('.btn-clear').click(function(e) {
+            searchForm.empty().submit();
+        });
+    </script>
+</body>
+</html>

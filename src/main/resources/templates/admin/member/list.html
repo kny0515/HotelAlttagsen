@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 화면</title>
+</head>
+<body>
+
+        <h1>관리자 회원 관리</h1>
+
+        <form method="post">
+            회원 아이디 검색 : <input type="text" name="userid" style="width: 500px;margin-bottom: 30px;" />
+                      <input type="submit" value="검색" />
+        </form>
+
+        <table border="1">
+            <tr>
+                <td>회원아이디</td>
+                <td>회원패스워드</td>
+                <td>회원이름</td>
+                <td>회원 생년월일</td>
+                <td>회원 전화번호</td>
+                <td>회원 성별</td>
+                <td>가입일자</td>
+            </tr>
+            <tr th:each="list : ${member}">
+                <td th:text="${list.getUserId()}"></td>
+                <td th:text="${list.getUserPw()}"></td>
+                <td th:text="${list.getUserName()}"></td>
+                <td th:text="${list.getUserBir()}"></td>
+                <td th:text="${list.getUserTel()}"></td>
+                <td th:text="${list.getUserGender()}"></td>
+                <td th:text="${list.getRegDate()}"></td>
+
+            </tr>
+        </table>
+
+</body>
+</html>

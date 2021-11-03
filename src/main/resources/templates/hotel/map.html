@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href='../css/fullcalendar/main.css' rel='stylesheet' />
+  <script src='../css/fullcalendar/main.js'></script>
+  <script src="../css/fullcalendar/ko.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <title>오시는길</title>
+
+</head>
+<body>
+
+<header id="header">
+  <div class="header__logo">
+    <a th:href="@{/}"><img src="/css/img/logo.png"></a>
+  </div>
+  <ul class="header__menu">
+    <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
+      <li><a th:href="@{/hotel/join}">회원가입</a></li>
+      <li><a th:href="@{/hotel/login}">로그인</a></li>
+    </div>
+    <div sec:authorize-expr="isAuthenticated()">
+      <li><a th:href="@{/hotel/logout}">로그아웃</a></li>
+    </div>
+  </ul>
+</header>
+<hr />
+<nav id="navbar">
+  <ul class="navbar__menu">
+    <li><a th:href="@{/hotel/introduce}">호텔소개</a></li>
+    <li><a th:href="@{/hotel/restaurant}">레스토랑/뷔페</a></li>
+    <li><a th:href="@{../board/list}">게시판</a></li>
+    <li><a th:href="@{/hotel/reservation}">예약하기</a></li>
+    <li><a th:href="@{/hotel/map}">오시는 길</a> </li>
+  </ul>
+</nav>
+<section>
+  <div class="comemap" style="text-align: center" >
+    <h2 style="margin-top: 30px;">오시는 길</h2>
+  </div>
+
+
+  <div id="map" style="border: 1px solid black; border-radius: 10px; margin: 0 auto; margin-top: 25px; height: 500px; width: 50%" ></div>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d7eaebc394965bab3abcb8246c3cf3b2"></script>
+  <script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+              center: new kakao.maps.LatLng(35.197854, 129.228051), // 지도의 중심좌표
+              level: 3 // 지도의 확대 레벨
+            };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+  </script>
+  <div class="map" style="text-align: center" margin-top="40px;" >
+    <br/><p><strong>주소</strong> <br/>
+    부산광역시 기장군 기장읍 기장해안로 268-31ㅣ268-31<br /><br /><br /><br />
+  </p>
+  </div>
+  <hr style="width: 50%; margin: 0 auto;" />
+  <div class="roadto">
+    <div class="section" style="width: 50%; margin:0 auto;" >
+      <div class="where"><br /><br />부<br />산<br />역</div>
+
+      <dl>
+        <br /><br /><br />
+        <dt class="taxi"><img src="/css/img/taxi.png">&nbsp;&nbsp;&nbsp;택시</dt>
+        <dd>약 35분 소요, 약 22,000원 (통행료 포함, 교통사정에 따른 변동 가능)</dd><br /><br />
+        <dt class="car"><img src="/css/img/car.png">&nbsp;&nbsp;&nbsp;자동차</dt>
+        <dd>약 25km (부산역 - 광안대교 – 부산울산 고속도로 – 기장해안로 – 알딱센)</dd><br /><br />
+        <dt class="public"><img src="/css/img/bus.png">&nbsp;&nbsp;&nbsp;대중교통</dt>
+        <dd>약 1시간 10분 ~ 40분 정도 소요, 방법과 교통 사정에 따라 변동 가능</dd><br />
+        <dd>
+          <ul>
+            <li><strong>버스+도보</strong>&nbsp&nbsp부산역 버스 정류장 - 1001번 버스 - 동암후문 정류장 하차 - 알딱센 입구까지 도보로 약 100m 이동</li>
+            <li><strong>지하철+택시</strong>&nbsp&nbsp부산역 (1호선) - 교대역 하차 및 환승 - 교대역 (동해선) - 오시리아역 (동해선) - 택시 이동</li>
+            <li><strong>지하철+버스+도보</strong>&nbsp&nbsp부산역 (1호선) - 교대역 하차 및 환승 - 교대역 (동해선) - 오시리아역 (동해선) -<br> 버스 139번, 181번, 100번으로 환승 - 동암후문 정류장 하차 - 알딱센 입구까지 도보로 약 100m 이동</li>
+            <li><strong>버스+버스+도보</strong>&nbsp&nbsp부산역 버스 정류장 - 1003번 버스 - 영남 아파트 정류장 하차 - 100번 버스 환승 - 동암 후문 정류장 하차 – 알딱센 입구까지 도보로 약 100m 이동</li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+    <br /><br />
+    <hr style="width: 50%; margin: 0 auto;" />
+    <div class="section" style="width: 50%; margin:0 auto;">
+      <div class="where"><br /><br />김<br />해<br />공<br />항</div>
+      <dl>
+        <br /><br /><br />
+        <dt class="taxi"><img src="/css/img/taxi.png">&nbsp;&nbsp;&nbsp;택시</dt>
+        <dd>약 30분 소요, 약 40,000원 (교통 사정에 따라 변동 가능)</dd><br /><br />
+        <dt class="car"><img src="/css/img/car.png">&nbsp;&nbsp;&nbsp;자동차</dt>
+        <dd>약 48km (김해공항 - 공항진입로 - 중앙고속도로 (삼락-대동) - 부산외곽순환고속도로 - 동해고속도로 (부산-울산) - 동부산IC - 알딱센)</dd><br /><br />
+        <dt class="public"><img src="/css/img/bus.png">&nbsp;&nbsp;&nbsp;대중교통</dt>
+        <dd>약 1시간 30분 ~ 50분 정도 소요, 교통 사정에 따라 변동 가능</dd><br />
+        <dd>
+          <ul>
+            <li><strong>지하철+택시</strong>&nbsp&nbsp 공항역(김해경전철) - 사상역 하차 및 환승 - 사상역(2호선) - 장산역(2호선) - 택시이동</li>
+            <li><strong>지하철+버스+도보</strong>&nbsp&nbsp공항역(김해경전철) - 사상역 하차 및 환승 - 사상역(2호선) - 장산역(2호선) - 139번,1001번으로 환승 - 동암후문 정류장 하차 - 도보로 약 100m이동</li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+    <br /><br />
+    <hr style="width: 50%; margin: 0 auto;" />
+    <div class="section" style="width: 50%; margin:0 auto;">
+      <div class="where"><br /><br />해<br />운<br />대</div>
+      <dl>
+        <br /><br /><br />
+        <dt class="taxi"><img src="/css/img/taxi.png">&nbsp;&nbsp;&nbsp;택시</dt>
+        <dd>약 20분 소요, 약 10, 000원 (교통사정에 따른 변동 가능)</dd><br /><br />
+        <dt class="car"><img src="/css/img/car.png">&nbsp;&nbsp;&nbsp;자동차</dt>
+        <dd>약 8km (해운대 해변로 – 해운대로 – 기장해안로 - 알딱센)</dd><br /><br />
+        <dt class="public"><img src="/css/img/bus.png">&nbsp;&nbsp;&nbsp;대중교통</dt>
+        <dd>약 35분 ~ 45분 정도 소요, 교통 사정에 따라 변동 가능</dd><br />
+        <dd>
+          <ul>
+            <li><strong>버스+지하철+도보</strong>&nbsp&nbsp해운대역 (2호선) - 벡스코역 하차 및 환승 - 벡스코역 (동해선) - 오시리아역 (동해선) -  버스 139번, 181번, 100번으로 환승 - 동암후문 정류장 하차 - 알딱센 입구까지 도보로 약 100m 이동</li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+    <br /><br />
+    <hr style="width: 50%; margin: 0 auto;" />
+    <div class="section" style="width: 50%; margin:0 auto;">
+      <div class="where"><br /><br />동<br />해<br />남<br />부<br />선 <br />오<br />시<br />리<br />아<br />역</div>
+      <dl>
+        <br /><br /><br />
+        <dt class="taxi"><img src="/css/img/taxi.png">&nbsp;&nbsp;&nbsp;택시</dt>
+        <dd>약 6분 소요, 약 3,000원 </dd><br /><br />
+        <dt class="public"><img src="/css/img/bus.png">&nbsp;&nbsp;&nbsp;대중교통</dt><br />
+        <dd>
+          <ul>
+            <li><strong>버스+도보</strong>&nbsp&nbsp139번, 181번, 100번 등 이용해 동암 후문 정류장 하차 – 알딱센 입구까지 도보로 약 100m 이동</li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+    <br /><br />
+    <hr style="width: 50%; margin: 0 auto;" />
+
+    <div class="section" style="width: 50%; margin:0 auto;">
+      <div class="where"><br /><br />해<br />동<br />용<br />궁<br />사</div>
+      <dl>
+        <br /><br /><br />
+        <dt class="taxi"><img src="/css/img/taxi.png">&nbsp;&nbsp;&nbsp;택시</dt>
+        <dd>약 4분 소요, 약 3,000원</dd><br /><br />
+        <dt class="public"><img src="/css/img/bus.png">&nbsp;&nbsp;&nbsp;대중교통</dt><br />
+        <dd>
+          <ul>
+            <li><strong>버스+도보</strong>&nbsp&nbsp국립수산과학원 정류장에서 139번, 181번, 100번 등 이용해 동암후문 정류장 하차<br>도보: 해동용궁사부터 해안길을 따라 알딱센 입구까지 도보로 약 20분 이동</li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</section><br/><br/><br/><br/>
+
+<footer>
+  <div class="wrap_inner">
+    사업장 : 부산광역시 기장군 기장읍 기장해안로 268-31ㅣ268-31, Gijanghaean-ro, Sirang-ri, Gijang-eup,Gijang-gun, Busanㅣ사업자 등록 번호 : 621-81-99425 <br /><br />
+    T.051.604-7000 알딱센 커뮤니케이션 센터 1877-8448<br /><br />
+    <p class="copyright"> 2021(c)Alttagsen. All rights reserved. </p>
+  </div>
+</footer>
+</body>
+</html>

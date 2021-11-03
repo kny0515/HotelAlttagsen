@@ -1,0 +1,272 @@
+*{
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+a{
+    text-decoration-line: none;
+}
+table,tr,td{
+    margin: 0 auto;
+    text-align: center;
+}
+input[type="text"]{
+    border-style: none;
+    width: 300px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #D3D4D5;
+    color: black;
+
+}
+input[type="password"]{
+    width: 300px;
+    border-style: none;
+    width: 300px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #D3D4D5;
+    color: black;
+}
+input[type="email"]{
+    border-style: none;
+    width: 300px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #D3D4D5;
+    color: black;
+}
+input[type="date"]{
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #D3D4D5;
+    font-size: 18px;
+}
+label{
+    margin: 5px 8px 8px 5px;
+    font-size: 22px;
+}
+#Gender{
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+input[type="radio"]{
+    width: 23px;
+    height: 23px;
+    margin: 0 10px 0 0;;
+}
+input[type="tel"]{
+    width: 300px;
+    border-style: none;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #D3D4D5;
+    color: black;
+}
+#button1{
+    width: 400px;
+    height: 50px;
+    background-color: white;
+    color:rgba(82, 78, 78, 0.986);
+    font-size: 20px;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
+    margin: 7px 12px;
+    height: 100px;
+}
+#navbar{
+    display: flex;
+    justify-content: center;
+
+}
+#table{
+    margin-top: 150px;
+    margin-bottom: 550px;
+}
+#form__box{
+    text-align: center;
+}
+.header__logo{
+    margin-top: 30px;
+}
+.header__menu{
+    display: flex;
+    margin: 7px 12px;
+}
+.header__menu a{
+    color: black;
+}
+.header__menu li{
+    padding: 50px 12px;
+    list-style: none;
+    color: black;
+}
+.navbar__menu {
+    display: flex;
+    margin: 12px;
+}
+.navbar__menu a{
+    color: black;
+}
+.navbar__menu li{
+    list-style: none;
+    padding: 12px;
+
+}
+.main__screen img{
+    width: 100%;
+    height: 80vh;
+}
+.title__font{
+    margin-top: 72px;
+    margin-bottom: 30px;
+    font-size: 42px;
+    text-align: center;
+}
+.text__font{
+    text-align: center;
+    margin-bottom: 250px;
+}
+.sub__img{
+    width: 100%;
+}
+.sub__img img{
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    height: 730px;
+}
+.wrap_inner{
+    padding: 52px 15px;
+    background-color: black;
+    text-align: center;
+    color: white;
+}
+.sub__screen{
+    margin-bottom: 150px;
+}
+.sub__screen ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.sub__screen .sub__screen__img li img{
+    width: 400px;
+    height: 300px;
+}
+.wrap__inner__food{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 150px;
+}
+.wrap__inner__food ul{
+    list-style: none;
+}
+.inner__food img{
+    width: 700px;
+    height: 300px;
+}
+.inner__text{
+    margin-left: 30px;
+}
+.h1__menu{
+    text-align: center;
+    font-size: 30px;
+}
+.busan__tour{
+    margin-bottom: 100px;
+}
+.busan__tour__img img{
+    display: block;
+    margin: 0 auto;
+    width: 550px;
+    height: 300px;
+}
+.busan__tour__text{
+    text-align: center;
+}
+.tour__img{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.best__food__img img{
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+}
+.best__food__text{
+    text-align: center;
+}
+.food__img {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.best__food{
+    margin-bottom: 100px;
+}
+.text__join{
+    text-align: center;
+}
+.intro__list{
+    display: flex;
+    justify-content: center;
+}
+.intro__list__menu{
+
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    height: 360px;
+}
+.intro__list .intro__list__menu img {
+    border-radius: 10px;
+}
+.div1{
+    display: inline;
+    float: left;
+    transform: translateX(55%);
+    height: 360px;
+    width: 500px;
+    margin: 30px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.div2{
+    display: inline-block;
+    transform: translateX(65%);
+    height: 360px;
+    width: 500px;
+    margin: 30px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.img2{
+    text-align: center;
+    align-items: center;
+    padding: 25px;
+}
+.text{
+    text-align: center;
+    margin-bottom: 75px;
+    padding: 10px;
+    font-size: 17px;
+}
+.where{
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-right: 150px;
+}
+.section{
+    display: flex;
+}

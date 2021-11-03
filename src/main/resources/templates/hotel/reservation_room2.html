@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href='../css/fullcalendar/main.css' rel='stylesheet' />
+    <script src='../css/fullcalendar/main.js'></script>
+    <script src="../css/fullcalendar/ko.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>예약하기</title>
+
+</head>
+<body>
+<header id="header">
+    <div class="header__logo">
+        <a th:href="@{/}"><img src="/css/img/logo.png"></a>
+    </div>
+    <ul class="header__menu">
+        <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
+            <li><a th:href="@{/hotel/join}">회원가입</a></li>
+            <li><a th:href="@{/hotel/login}">로그인</a></li>
+        </div>
+        <div sec:authorize-expr="isAuthenticated()">
+            <li><a th:href="@{/hotel/logout}">로그아웃</a></li>
+        </div>
+    </ul>
+</header>
+<hr />
+<nav id="navbar">
+    <ul class="navbar__menu">
+        <li><a th:href="@{/hotel/introduce}">호텔소개</a></li>
+        <li><a th:href="@{/hotel/restaurant}">레스토랑/뷔페</a></li>
+        <li><a th:href="@{../board/list}">게시판</a></li>
+        <li><a th:href="@{/hotel/reservation}">예약하기</a></li>
+        <li><a th:href="@{/hotel/map}">오시는 길</a> </li>
+    </ul>
+</nav>
+<section>
+    <script type="text/javascript">
+        function reservationSubmit(){
+            var date = document.getElementById('startResDate').value;
+            var now = document.getElementById('endResDate').value;
+
+            console.log(date);
+            console.log(now);
+
+            var sdt = new Date(date);
+            var edt = new Date(now);
+
+            var dateDiff = Math.ceil((edt.getTime()-sdt.getTime())/(1000*3600*24));
+
+            if (dateDiff > 1){
+                alert('2박이상 장기투숙을 원하시는 고객님은 고객센터로 문의 부탁 드립니다.\n' +
+                    '불편을 드려서 죄송합니다.....\n' +
+                    '고객센터 : 1234-5789');
+                return false;
+            }else if(dateDiff < 1){
+                alert('날짜 입력을 잘못 하셨습니다.. 다시 입력해주세요..');
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+    <div class="resv" style="margin-top: 150px;">
+        <form method="post" style="text-align: center; margin-bottom: 250px;">
+            <h1>디럭스 트윈룸</h1>
+            예약자명 <br />
+            <input type="text" name=resName placeholder="예약자명"><br />
+            생년월일 <br />
+            <input type="text" name=resBirth placeholder="생년월일"(ex.950123)><br />
+            연락처 <br />
+            <input type="text" name=resPhone placeholder="연락처(ex.010-0000-0000)"><br />
+            아이디 <br />
+            <input type="email" name=resUser placeholder="아이디"><br />
+            체크인 <br />
+            <input type="date" name=startResDate id="startResDate"><br /><br />
+            체크아웃<br />
+            <input type="date" name=endResDate id="endResDate"><br /><br />
+            <input type="submit" onclick="return reservationSubmit()"  id="button1" value="예약하기">
+        </form>
+    </div>
+</section>
+<footer>
+    <div class="wrap_inner">
+        사업장 : 부산광역시 기장군 기장읍 기장해안로 268-31ㅣ268-31, Gijanghaean-ro, Sirang-ri, Gijang-eup,Gijang-gun, Busanㅣ사업자 등록 번호 : 621-81-99425 <br /><br />
+        T.051.604-7000 알딱센 커뮤니케이션 센터 1877-8448<br /><br />
+        <p class="copyright"> 2021(c)Alttagsen. All rights reserved. </p>
+    </div>
+</footer>
+</body>
+</html>

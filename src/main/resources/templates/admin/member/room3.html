@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 화면</title>
+</head>
+<body>
+
+        <h1>관리자 예약관리</h1>
+        <div>
+            <a th:href="@{/admin/main}">관리자 메인</a>
+            |
+            <a th:href="@{/admin/member/list}">회원 관리</a>
+            |
+            <a th:href="@{/admin/member/reservation}">예약 관리</a>
+            |
+            <a th:href="@{/hotel/logout}">로그아웃</a>
+            <br />
+        </div>
+        <h1>로얄 스위트룸</h1>
+        <table border="1">
+            <tr>
+                <td>예약자명</td>
+                <td>예약자 아이디</td>
+                <td>예약자 생년월일</td>
+                <td>예약자 전화번호</td>
+                <td>입실 날짜</td>
+                <td>퇴실 날짜</td>
+            </tr>
+            <tr th:each="list : ${reservationList}">
+                <td th:text="${list.getResName()}"></td>
+                <td th:text="${list.getResUser()}"></td>
+                <td th:text="${list.getResBirth()}"></td>
+                <td th:text="${list.getResPhone()}"></td>
+                <td th:text="${list.getStartResDate()}"></td>
+                <td th:text="${list.getEndResDate()}"></td>
+            </tr>
+        </table>
+</body>
+</html>

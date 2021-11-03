@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>회원 가입</title>
+    <meta charset="utf-8"/>
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+<header id="header">
+    <div class="header__logo">
+        <a th:href="@{/}"><img src="/css/img/logo.png"></a>
+    </div>
+    <ul class="header__menu">
+        <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
+            <li><a th:href="@{/hotel/join}">회원가입</a></li>
+            <li><a th:href="@{/hotel/login}">로그인</a></li>
+        </div>
+        <div sec:authorize-expr="isAuthenticated()">
+            <li><a th:href="@{/hotel/logout}">로그아웃</a></li>
+        </div>
+    </ul>
+</header>
+<hr />
+<nav id="navbar">
+    <ul class="navbar__menu">
+        <li><a th:href="@{/hotel/introduce}">호텔소개</a></li>
+        <li><a th:href="@{/hotel/restaurant}">레스토랑/뷔페</a></li>
+        <li><a th:href="@{../board/list}">게시판</a></li>
+        <li><a th:href="@{/hotel/reservation}">예약하기</a></li>
+        <li><a th:href="@{/hotel/map}">오시는 길</a> </li>
+    </ul>
+</nav>
+<section>
+    <br /><br /><br />
+    <script type="text/javascript">
+        function joinSubmit(){
+            var userpw1 = document.getElementById('userPw').value;
+            var userpw2 = document.getElementById('userPwCom').value;
+
+            if (userpw1 != userpw2){
+                alert('비밀번호가 일치하지 않습니다.... 다시 입력해주세요');
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+    <form method="post" id=form__box>
+        아이디<br />
+        <input type="email" name="userId" placeholder="이메일을 입력해주세요" required /><br />
+        비밀번호<br />
+        <input type="password" name="userPw" id="userPw" placeholder="비밀번호" required /><br />
+        비밀번호 확인<br />
+        <input type="password" name="userPwCom" id="userPwCom" placeholder="비밀번호 확인" required /><br />
+        이름<br />
+        <input type="text" name="userName" placeholder="이름을 입력하세요" required /><br />
+        생년월일<br />
+        <input type="date" name="userBir" placeholder="생년월일" required /><br /><br />
+        전화번호<br />
+        <input type="tel" name="userTel" placeholder="전화번호" required /><br /><br />
+        성별<br />
+        <input type="radio" name="userGender" value="남" />남
+        <input type="radio" name="userGender" value="여" />여
+       <br /><br /><br />
+        <input type="submit" onclick="return joinSubmit()" id="button1" value="회원가입">
+    </form>
+    <br>
+
+    <br>
+    <br>
+</section>
+<footer>
+    <div class="wrap_inner">
+        사업장 : 부산광역시 기장군 기장읍 기장해안로 268-31ㅣ268-31, Gijanghaean-ro, Sirang-ri, Gijang-eup,Gijang-gun, Busanㅣ사업자 등록 번호 : 621-81-99425 <br /><br />
+        T.051.604-7000 알딱센 커뮤니케이션 센터 1877-8448<br /><br />
+        <p class="copyright"> 2021(c)Alttagsen. All rights reserved. </p>
+    </div>
+</footer>
+</body>
+</html>

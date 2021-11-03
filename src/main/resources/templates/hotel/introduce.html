@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>로그인</title>
+    <meta charset="utf-8"/>
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+<header id="header">
+    <div class="header__logo">
+        <a th:href="@{/}"><img src="/css/img/logo.png"></a>
+    </div>
+    <ul class="header__menu">
+        <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
+            <li><a th:href="@{/hotel/join}">회원가입</a></li>
+            <li><a th:href="@{/hotel/login}">로그인</a></li>
+        </div>
+        <div sec:authorize-expr="isAuthenticated()">
+            <li><a th:href="@{/hotel/logout}">로그아웃</a></li>
+        </div>
+    </ul>
+</header>
+<hr />
+<nav id="navbar">
+    <ul class="navbar__menu">
+        <li><a th:href="@{/hotel/introduce}">호텔소개</a></li>
+        <li><a th:href="@{/hotel/restaurant}">레스토랑/뷔페</a></li>
+        <li><a th:href="@{../board/list}">게시판</a></li>
+        <li><a th:href="@{/hotel/reservation}">예약하기</a></li>
+        <li><a th:href="@{/hotel/map}">오시는 길</a> </li>
+    </ul>
+</nav>
+
+<section>
+    <div class="intro__list">
+        <div class="intro__list__menu">
+        <a th:href="@{/hotel/room}">
+            <img src="/css/img/room2.jpg"
+                 width="500" height="300"></a>
+            <div class="text__font">
+                <h2>객실 목록</h2>
+            </div>
+        </div>
+
+        <div class="intro__list__menu">
+        <a th:href="@{/hotel/convenience}">
+            <img src="/css/img/health.jpg"
+                 width="500" height="300"></a>
+            <div class="text__font">
+                <h2>편의시설</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="intro__list">
+        <div class="intro__list__menu">
+        <a th:href="@{/hotel/event}">
+            <img src="/css/img/wedding.jpg"
+                 width="500" height="300"></a>
+            <div class="text__font">
+                <h2>이벤트</h2>
+            </div>
+        </div>
+
+
+        <div class="intro__list__menu">
+            <a th:href="@{/hotel/service}">
+                <img src="/css/img/service.jpg"
+                    width="500" height="300"></a>
+            <div class="text__font">
+                <h2>서비스</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="wrap_inner">
+        사업장 : 부산광역시 기장군 기장읍 기장해안로 268-31ㅣ268-31, Gijanghaean-ro, Sirang-ri, Gijang-eup,Gijang-gun, Busanㅣ사업자 등록 번호 : 621-81-99425 <br /><br />
+        T.051.604-7000 알딱센 커뮤니케이션 센터 1877-8448<br /><br />
+        <p class="copyright"> 2021(c)Alttagsen. All rights reserved. </p>
+    </div>
+</footer>
+</body>
+</html>

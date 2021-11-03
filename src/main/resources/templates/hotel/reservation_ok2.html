@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href='../css/fullcalendar/main.css' rel='stylesheet' />
+    <script src='../css/fullcalendar/main.js'></script>
+    <script src="../css/fullcalendar/ko.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>예약하기</title>
+
+</head>
+<body>
+<header id="header">
+    <div class="header__logo">
+        <a th:href="@{/}"><img src="/css/img/logo.png"></a>
+    </div>
+    <ul class="header__menu">
+        <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
+            <li><a th:href="@{/hotel/join}">회원가입</a></li>
+            <li><a th:href="@{/hotel/login}">로그인</a></li>
+        </div>
+        <div sec:authorize-expr="isAuthenticated()">
+            <li><a th:href="@{/hotel/logout}">로그아웃</a></li>
+        </div>
+    </ul>
+</header>
+<hr />
+<nav id="navbar">
+    <ul class="navbar__menu">
+        <li><a th:href="@{/hotel/introduce}">호텔소개</a></li>
+        <li><a th:href="@{/hotel/restaurant}">레스토랑/뷔페</a></li>
+        <li><a th:href="@{../board/list}">게시판</a></li>
+        <li><a th:href="@{/hotel/reservation}">예약하기</a></li>
+        <li><a th:href="@{/hotel/map}">오시는 길</a> </li>
+    </ul>
+</nav>
+<section>
+    <div th:if="${result}">
+        <div class="resv" style="margin-top: 150px; display: block; text-align: center; font-size: 22px;">
+        <h1>예약이 완료 되었습니다.</h1><br />
+            <h1>디럭스 트윈룸</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+                <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
+                <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+            </svg> <strong>예약자</strong><div th:text="${name}"></div><br />
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+                <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
+                <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+            </svg> <strong>생년월일 </strong><div th:text="${birth}"></div><br />
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+                <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
+                <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+            </svg> <strong>연락처</strong><div th:text="${phone}"></div><br />
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+                <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
+                <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+            </svg> <strong>아이디</strong><div th:text="${id}"></div><br />
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+                <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
+                <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+            </svg> <strong>입실날짜</strong><div th:text="${start}"></div><br />
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+                <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
+                <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+            </svg> <strong>퇴실날짜</strong><div th:text="${end}"></div><br />
+    </div>
+    </div>
+    <div th:if="${result eq false}">
+        <div class="resv" style="margin-top: 150px; display: block; text-align: center; font-size: 22px;">
+            <h1>이미 예약된 날짜입니다 다시 시도해주세요</h1>
+            <a th:href="@{/hotel/reservation}"><img src="/css/img/back.png" width="73" height="75"></a>
+        </div>
+    </div>
+    <br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br /><br /> <br /><br /> <br /> <br /> <br /><br /> <br /> <br /> <br /><br /> <br /> <br /> <br />
+</section>
+<footer>
+    <div class="wrap_inner">
+        사업장 : 부산광역시 기장군 기장읍 기장해안로 268-31ㅣ268-31, Gijanghaean-ro, Sirang-ri, Gijang-eup,Gijang-gun, Busanㅣ사업자 등록 번호 : 621-81-99425 <br /><br />
+        T.051.604-7000 알딱센 커뮤니케이션 센터 1877-8448<br /><br />
+        <p class="copyright"> 2021(c)Alttagsen. All rights reserved. </p>
+    </div>
+</footer>
+</body>
+</html>

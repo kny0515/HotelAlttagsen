@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<style>
+    #myImg, #myImg2, #myImg3, #myImg4, #myImg5, #myImg6 {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #myImg:hover , #myImg2:hover, #myImg3:hover, #myImg4:hover, #myImg5:hover, #myImg6:hover
+    {
+        opacity: 0.7;
+    }
+
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.9);
+    }
+
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+
+    #caption, #caption2, #caption3, #caption4, #caption5, #caption6 {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+
+    .modal-content, #caption, #caption2, #caption3, #caption4, #caption5, #caption6 {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)}
+        to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+    }
+
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+    @media only screen and (max-width: 700px){
+        .modal-content {
+            width: 100%;
+        }
+    }
+</style>
+<head>
+    <title>이벤트</title>
+    <meta charset="utf-8"/>
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+<header id="header">
+    <div class="header__logo">
+        <a th:href="@{/}"><img src="/css/img/logo.png"></a>
+    </div>
+    <ul class="header__menu">
+        <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
+            <li><a th:href="@{/hotel/join}">회원가입</a></li>
+            <li><a th:href="@{/hotel/login}">로그인</a></li>
+        </div>
+        <div sec:authorize-expr="isAuthenticated()">
+            <li><a th:href="@{/hotel/logout}">로그아웃</a></li>
+        </div>
+    </ul>
+</header>
+<hr />
+<nav id="navbar">
+    <ul class="navbar__menu">
+        <li><a th:href="@{/hotel/introduce}">호텔소개</a></li>
+        <li><a th:href="@{/hotel/restaurant}">레스토랑/뷔페</a></li>
+        <li><a th:href="@{../board/list}">게시판</a></li>
+        <li><a th:href="@{/hotel/reservation}">예약하기</a></li>
+        <li><a th:href="@{/hotel/map}">오시는 길</a> </li>
+    </ul>
+</nav>
+<section>
+    <div class="img2">
+        <img src="/css/img/wedding.jpg"
+             width="420" height="250" id="myImg">
+        <div id="myModal" class="modal">
+            <span class="close">×</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+        <script>
+
+            var modal = document.getElementById('myModal');
+
+
+            var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                captionText.innerHTML = this.alt;
+            }
+
+
+            var span = document.getElementsByClassName("close")[0];
+
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        </script>
+        <img src="/css/img/wedding2.jpg"
+             width="420" height="250" id="myImg2">
+        <div id="myModal2" class="modal">
+            <span class="close">×</span>
+            <img class="modal-content" id="img02">
+            <div id="caption2"></div>
+        </div>
+        <script>
+
+            var modal = document.getElementById('myModal2');
+
+
+            var img = document.getElementById('myImg2');
+            var modalImg = document.getElementById("img02");
+            var captionText = document.getElementById("caption2");
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                captionText.innerHTML = this.alt;
+            }
+
+
+            var span = document.getElementsByClassName("close")[1];
+
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        </script>
+        <img src="/css/img/wedding3.jpg"
+             width="420" height="250" id="myImg3">
+        <div id="myModal3" class="modal">
+            <span class="close">×</span>
+            <img class="modal-content" id="img03">
+            <div id="caption3"></div>
+        </div>
+        <script>
+
+            var modal = document.getElementById('myModal3');
+
+
+            var img = document.getElementById('myImg3');
+            var modalImg = document.getElementById("img03");
+            var captionText = document.getElementById("caption3");
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                captionText.innerHTML = this.alt;
+            }
+
+
+            var span = document.getElementsByClassName("close")[2];
+
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="text">
+            <br><h2>웨딩홀</h2><br>
+            <p>단 한번 뿐인 최상의 결혼식을 위하여 알딱센이 최고의 장소를 제공합니다.<br>
+                아름다운 추억 알딱센과 함께 만들어 가세요.<br><br></p>
+            <p>문의 : (051)123-4567</p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="img2">
+        <img src="/css/img/meeting.jpg"
+             width="420" height="250" id="myImg4">
+        <div id="myModal4" class="modal">
+            <span class="close">×</span>
+            <img class="modal-content" id="img04">
+            <div id="caption4"></div>
+        </div>
+        <script>
+
+            var modal = document.getElementById('myModal4');
+
+
+            var img = document.getElementById('myImg4');
+            var modalImg = document.getElementById("img04");
+            var captionText = document.getElementById("caption4");
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                captionText.innerHTML = this.alt;
+            }
+
+
+            var span = document.getElementsByClassName("close")[3];
+
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        </script>
+        <img src="/css/img/meeting2.jpg"
+             width="420" height="250" id="myImg5">
+        <div id="myModal5" class="modal">
+            <span class="close">×</span>
+            <img class="modal-content" id="img05">
+            <div id="caption5"></div>
+        </div>
+        <script>
+
+            var modal = document.getElementById('myModal5');
+
+
+            var img = document.getElementById('myImg5');
+            var modalImg = document.getElementById("img05");
+            var captionText = document.getElementById("caption5");
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                captionText.innerHTML = this.alt;
+            }
+
+
+            var span = document.getElementsByClassName("close")[4];
+
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        </script>
+        <img src="/css/img/meeting3.jpg"
+             width="420" height="250" id="myImg6">
+        <div id="myModal6" class="modal">
+            <span class="close">×</span>
+            <img class="modal-content" id="img06">
+            <div id="caption6"></div>
+        </div>
+        <script>
+
+            var modal = document.getElementById('myModal6');
+
+
+            var img = document.getElementById('myImg6');
+            var modalImg = document.getElementById("img06");
+            var captionText = document.getElementById("caption6");
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                captionText.innerHTML = this.alt;
+            }
+
+
+            var span = document.getElementsByClassName("close")[5];
+
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="text">
+            <br><h2>가족연회 & 미팅</h2><br>
+            <p>품격 있는 가족연회와 성공적인 대규모 비즈니스 행사를 위하여<br>
+                알딱센에서 도와드리겠습니다.<br><br></p>
+            <p>문의 : (051)123-4567</p>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="wrap_inner">
+        사업장 : 부산광역시 기장군 기장읍 기장해안로 268-31ㅣ268-31, Gijanghaean-ro, Sirang-ri, Gijang-eup,Gijang-gun, Busanㅣ사업자 등록 번호 : 621-81-99425 <br /><br />
+        T.051.604-7000 알딱센 커뮤니케이션 센터 1877-8448<br /><br />
+        <p class="copyright"> 2021(c)Alttagsen. All rights reserved. </p>
+    </div>
+</footer>
+</body>
+</html>

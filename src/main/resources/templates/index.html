@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>알딱센</title>
+</head>
+<body>
+<header id="header">
+    <div class="header__logo">
+        <a th:href="@{/}"><img src="/css/img/logo.png"></a>
+    </div>
+    <ul class="header__menu">
+        <div sec:authorize-expr="!isAuthenticated()" style="display: flex;">
+            <li><a th:href="@{/hotel/join}">회원가입</a></li>
+            <li><a th:href="@{/hotel/login}">로그인</a></li>
+        </div>
+        <div sec:authorize-expr="isAuthenticated()">
+            <li><a th:href="@{/hotel/logout}">로그아웃</a></li>
+        </div>
+    </ul>
+</header>
+<hr />
+<nav id="navbar">
+    <ul class="navbar__menu">
+        <li><a th:href="@{/hotel/introduce}">호텔소개</a></li>
+        <li><a th:href="@{/hotel/restaurant}">레스토랑/뷔페</a></li>
+        <li><a th:href="@{/board/list}">게시판</a></li>
+        <li><a th:href="@{/hotel/reservation}">예약하기</a></li>
+        <li><a th:href="@{/hotel/map}">오시는 길</a> </li>
+    </ul>
+</nav>
+<section>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/css/img/1.jpg" class="d-block w-100" alt="..." style="height: 650px;">
+            </div>
+            <div class="carousel-item">
+                <img src="/css/img/2.jpg" class="d-block w-100" alt="..." style="height: 650px;">
+            </div>
+            <div class="carousel-item">
+                <img src="/css/img/3.jpg" class="d-block w-100" alt="..." style="height: 650px;">
+            </div>
+            <div class="carousel-item">
+                <img src="/css/img/4.jpg" class="d-block w-100" alt="..." style="height: 650px;">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="title__font">
+        <p>'알딱센'</p>
+    </div>
+    <div class="text__font">
+        알아서 잘 딱 깔끔하고 센스있게!!! 알딱센이 새롭게 태어납니다.<br />
+        독보적인 라이프스타일 플랫폼인 알딱센다운 공간으로 고객에게 색다른 경험을 선사
+        해 나갈 예정입니다.<br /><br />
+        이제 알딱센을 통해 더 많은 고객이 알딱센 브랜드 컨셉트와 철학을 경험하는
+        계기를 마련해 나가겠습니다.<br /><br />
+        알딱센의 변화를 기대해 주십시오.
+    </div>
+</section>
+<section>
+    <div class="sub__img">
+        <img src="/css/img/pool.jpg">
+    </div>
+    <div class="title__font">
+        <p> 자연이 주는 낭만 속의 이국적인 수영장과<br />
+            자연을 그대로 닮은 사계절 온수풀입니다. <br /></p>
+    </div>
+    <div class="text__font">
+        <br>
+        <br>
+        국내 최대 47m를 자랑하는 ‘인피니티 풀 (The Infiniti Pool)’은 사계절 온수풀로 마치 숲 속 천상에서 유영하는 듯,<br>
+        색다른 평화와 차분함을 허락합니다.<br>
+        <br>
+        <br>
+        궁극의 수평선 ‘엣지’는 원시림과 폭포에 맞닿아 있어 마치 시간이 달콤한 정적 속에서 그대로 멈춘 것과 같은 신비로움을 느낄 수 있습니다.<br>
+        호텔 <strong>Alttagsen</strong> 에서 여유로운 시간을 느껴보세요.</p>
+    </div>
+</section>
+
+<section>
+    <div class="sub__img">
+        <img src="/css/img/room.jpg">
+    </div>
+    <div class="title__font">
+        <p>따로, 또 같이 가족 여행에 최적화된 넓고 여유로운 객실</p>
+        <br>
+    </div>
+    <div class="text__font">
+        Alttagsen의 모든 객실은 일반 호텔의 1.5배 이상인 프라이빗 발코니 포함 약 21평의 넓은 규모로
+        보다 쾌적하고 편안한 휴식의 즐거움을 선사합니다.<br /><br />객실마다 프라이빗 발코니가 있어
+        바다와 숲의 풍경, 바람과 공기를 보다 가까이 누릴 수 있습니다.<br /><br />
+        트윈 베드 객실에는 두 개의 침대를 하나로 연결할 수 있는 레일 시스템이 적용되어 있어<br /> 어린 자녀와
+        함께하는 여행에서 보다 안전하고 편안한 숙면이 가능합니다.<br /><br />
+        또한 여러 명의 일행과 동반 여행 시 커넥팅 룸을 선택, <br />두 개의 객식을 따로 또 같이 사용하는 편리함도 누릴 수 있습니다.</p>
+    </div>
+</section>
+
+<section>
+    <div class="sub__img">
+        <img src="/css/img/food.jpg">
+    </div>
+    <div class="title__font">
+        <p>딱깔센 뷔페</p>
+    </div>
+    <div class="text__font">
+        <p><strong>딱</strong><strong> 깔</strong>끔하고<strong> 센</strong>스있는 요리들로
+            이루어진 뷔페입니다.<br /><br />벽돌로 지어진 고급스러운 인테리어와 각종 와인들, 신선한 고급요리들이
+            더해져 더욱 깊은 분위기를 내는 데에 도움을 줍니다.<br />세계 각국의 요리들로 이뤄져있어
+            개개인의 입맛에 맞게 골라 즐길 수 있습니다.<br /><br />색다른 맛을 원하신다면 알딱센 호텔을 찾아주세요.
+        </p>
+    </div>
+</section>
+<footer>
+    <div class="wrap_inner">
+        사업장 : 부산광역시 기장군 기장읍 기장해안로 268-31ㅣ268-31, Gijanghaean-ro, Sirang-ri, Gijang-eup,Gijang-gun, Busanㅣ사업자 등록 번호 : 621-81-99425 <br /><br />
+        T.051.604-7000 알딱센 커뮤니케이션 센터 1877-8448<br /><br />
+        <p class="copyright"> 2021(c)Alttagsen. All rights reserved. </p>
+    </div>
+</footer>
+</body>
+</html>

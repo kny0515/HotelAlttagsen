@@ -31,7 +31,7 @@ public class HotelController {
 
     @GetMapping("hotel/join")
     public String join(){
-        return "/hotel/join";
+        return "hotel/join";
     }
 
 
@@ -44,7 +44,7 @@ public class HotelController {
 
         model.addAttribute("result", result);
 
-        return "/hotel/join_complete";
+        return "hotel/join_complete";
     }
 
     @RequestMapping("hotel/login")
@@ -57,37 +57,37 @@ public class HotelController {
     }
     @GetMapping("hotel/room")
     public String room(){
-        return "/hotel/room";
+        return "hotel/room";
     }
     @GetMapping("hotel/convenience")
     public String convenience(){
-        return "/hotel/convenience";
+        return "hotel/convenience";
     }
     @GetMapping("hotel/event")
     public String event(){
-        return "/hotel/event";
+        return "hotel/event";
     }
     @GetMapping("hotel/service")
     public String service(){
-        return "/hotel/service";
+        return "hotel/service";
     }
     @GetMapping("hotel/restaurant")
     public String restaurant(){
-        return "/hotel/res";
+        return "hotel/res";
     }
     @GetMapping("hotel/reservation")
     public String reservation(Model model){
-        return "/hotel/reservation";
+        return "hotel/reservation";
     }
     @GetMapping("hotel/reservation_room")
-    public String reservationRoom1(){return "/hotel/reservation_room";}
+    public String reservationRoom1(){return "hotel/reservation_room";}
     @GetMapping("hotel/reservation_room2")
-    public String reservationRoom2(){return "/hotel/reservation_room2";}
+    public String reservationRoom2(){return "hotel/reservation_room2";}
     @GetMapping("hotel/reservation_room3")
-    public String reservationRoom3(){return "/hotel/reservation_room3";}
+    public String reservationRoom3(){return "hotel/reservation_room3";}
     @GetMapping("hotel/map")
     public String map(){
-        return "/hotel/map";
+        return "hotel/map";
     }
 
 
@@ -97,7 +97,7 @@ public class HotelController {
         List<ReservationDTO> reservationDTOS = reservationService.getReservationList();
 
         model.addAttribute("reservationList", reservationDTOS);
-        return "/hotel/reservation_list";
+        return "hotel/reservation_list";
 
 
     }
@@ -108,7 +108,7 @@ public class HotelController {
         List<Reservation2DTO> reservationDTOS = reservation2Service.getReservationList();
 
         model.addAttribute("reservationList", reservationDTOS);
-        return "/hotel/reservation2_list";
+        return "hotel/reservation2_list";
 
 
     }
@@ -119,7 +119,7 @@ public class HotelController {
         List<Reservation3DTO> reservationDTOS = reservation3Service.getReservationList();
 
         model.addAttribute("reservationList", reservationDTOS);
-        return "/hotel/reservation3_list";
+        return "hotel/reservation3_list";
 
 
     }
@@ -146,7 +146,7 @@ public class HotelController {
         model.addAttribute("end", end);
 
 
-        return "/hotel/reservation_ok";
+        return "hotel/reservation_ok";
     }
     @PostMapping("hotel/reservation_room2")
     public String reservation_ok2(Model model, HttpServletRequest request,
@@ -170,7 +170,7 @@ public class HotelController {
         model.addAttribute("end", end);
 
 
-        return "/hotel/reservation_ok2";
+        return "hotel/reservation_ok2";
     }
     @PostMapping("hotel/reservation_room3")
     public String reservation_ok3(Model model, HttpServletRequest request,
@@ -194,6 +194,6 @@ public class HotelController {
         model.addAttribute("end", end);
 
 
-        return "/hotel/reservation_ok3";
+        return "hotel/reservation_ok3";
     }
 }

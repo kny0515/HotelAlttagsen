@@ -36,7 +36,7 @@ public class AdminMemberController {
 
         model.addAttribute("member", memberInputs);
 
-        return "/admin/member/list";
+        return "admin/member/list";
     }
     @PostMapping("admin/member/list")
     public String listSearch(Model model, HttpServletRequest request){
@@ -47,13 +47,13 @@ public class AdminMemberController {
 
         model.addAttribute("member", result);
 
-        return "/admin/member/listSearch";
+        return "admin/member/listSearch";
     }
 
     @GetMapping("admin/member/reservation")
     public String reservation(){
 
-        return "/admin/member/reservation";
+        return "admin/member/reservation";
     }
     @GetMapping("admin/member/room1")
     public String reservationRoom(Model model){
@@ -62,7 +62,7 @@ public class AdminMemberController {
 
         model.addAttribute("reservationList", reservationDTOList);
 
-        return "/admin/member/room1";
+        return "admin/member/room1";
     }
 
     @GetMapping("admin/member/room2")
@@ -72,7 +72,7 @@ public class AdminMemberController {
 
         model.addAttribute("reservationList", reservationDTOList);
 
-        return "/admin/member/room2";
+        return "admin/member/room2";
     }
 
     @GetMapping("admin/member/room3")
@@ -82,6 +82,6 @@ public class AdminMemberController {
 
         model.addAttribute("reservationList", reservationDTOList);
 
-        return "/admin/member/room3";
+        return "admin/member/room3";
     }
 }
